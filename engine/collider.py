@@ -1,7 +1,7 @@
 """
     Note: Not intended for direct use
     Calculations in derived classes based on Jeff Thompson's website
-    www.jeffreythompson.org
+    http://www.jeffreythompson.org/collisiondetection/
 """
 from engine.behaviour import Behaviour
 

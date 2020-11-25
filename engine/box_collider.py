@@ -25,7 +25,7 @@ class BoxCollider(Collider):
 
     def collidepoint(self, other):
         super().collidepoint(other)
-        return self.rect.collidepoint(other)
+        return self.rect.collidepoint(other.center)
 
     def colliderect(self, other):
         super().colliderect(other)
@@ -36,11 +36,12 @@ class BoxCollider(Collider):
 
     def collideline(self, other):
         super().collideline(other)
-        return self.rect.collideline(other)
+        #REDO!!! This only works in pygame 2.0
+        return False
 
     def collidecircle(self, other):
         super().collidecircle(other)
-
+        #BUGGY!!! VERIFY
         test_x = other.center[0]
         test_y = other.center[1]
 
@@ -57,6 +58,6 @@ class BoxCollider(Collider):
         dist_x = other.center[0] - test_x
         dist_y = other.center[1] - test_y
 
-        dist = ((dist_x*dist_x)+(dist_y**dist_y))**0.5
+        dist = ((dist_x*dist_x)+(dist_y*dist_y))**0.5
 
         return dist <= other.radius

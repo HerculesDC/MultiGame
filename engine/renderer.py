@@ -14,8 +14,8 @@ class Renderer(Behaviour):
     def update(self, delta):
         super().update(delta)
         if self._rect_info:
-            self._rect_info.center = tuple(self.game_object.\
-                                       get_behaviour("Transform").position)
+            self._rect_info.center = tuple(self.game_object.transform.position)
+
     def render(self):
         super().render()
         if self._surf and self._rect_info:

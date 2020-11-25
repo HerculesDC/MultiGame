@@ -22,11 +22,9 @@ class CircleCollider(Collider):
 
     def collidepoint(self, other):
         super().collidepoint(other)
-        dist = ((other[0] - self.center[0])**2 + \
-                (other[1] - self.center[1])**2)**0.5
-        if dist <= self.radius:
-            return True
-        return False
+        dist = ((other.center[0] - self.center[0])**2 + \
+                (other.center[1] - self.center[1])**2)**0.5
+        return dist <= self.radius
 
     def colliderect(self, other):
         super().colliderect(other)
@@ -53,6 +51,7 @@ class CircleCollider(Collider):
 
     def collideline(self, other):
         super().collideline(other)
+        
 
     def collidecircle(self, other):
         super().collidepoint(other)

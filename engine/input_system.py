@@ -43,7 +43,7 @@ class InputSystem():
             return self.keys[key]
 
         def get_mouse_buttons(self):
-            return self.mouse_buttons()
+            return self.buttons
 
         def get_mouse_pos(self):
             return self.mouse_pos
