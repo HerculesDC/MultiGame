@@ -21,7 +21,7 @@ class Meteors(Behaviour):
         #meteor attributes
         self._meteor_colour = Color(250, 175, 25)
         self._meteor_radius = 10
-        self._max_speed = 0.0075
+        self._max_speed = 0.00075
         self._num_coords = self._num_meteors << 1
         self._rect = Rect(0, 0, 2*self._meteor_radius, 2*self._meteor_radius)
         self._surf = Surface((2*self._meteor_radius, 2*self._meteor_radius), SRCALPHA)
@@ -33,7 +33,7 @@ class Meteors(Behaviour):
                 random.randrange(1, self._bounce_area[0]-self._meteor_radius)*(temp)+
                 random.randrange(1, self._bounce_area[1]-self._meteor_radius)*(not temp))
             sp = 0
-            while -0.001 < sp < 0.001:
+            while -0.0001 < sp < 0.0001:
                 sp = random.uniform(-self._max_speed, self._max_speed)
             self._meteors_speeds.append(sp)
         import pygame.draw
@@ -44,14 +44,19 @@ class Meteors(Behaviour):
     def update(self, delta):
         temp_width = self._bounce_area[0] - (2*self._meteor_radius)
         temp_height = self._bounce_area[1] - (2*self._meteor_radius)
+        print(delta)
         for i in range(0, self._num_coords):
             temp = i%2==0
             self._meteors_pos[i] = int(self._meteors_pos[i]+
-                                       self._meteors_speeds[i]*self._bounce_area[not temp])
+                                       self._meteors_speeds[i]*delta*
+                                       self._bounce_area[not temp])
             self._meteors_speeds[i] *= Meteors.bounce(self._meteors_pos[i],
                                                    self._meteors_speeds[i],
                                                    (temp_width*(temp)+
                                                     temp_height*(not temp)))
+##        for item in self._meteors_pos:
+##            print(item)
+##        print("BREAK LINE!")
         super().update(delta)
 
     def render(self):

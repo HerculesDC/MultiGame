@@ -33,8 +33,8 @@ class Game:
             
             pygame.display.set_caption(self.title)
             #Game.__Game.set_level(StartScreen(self.screen_size))
-            #Game.__Game.set_level(GameSelectScreen(self.screen_size))
-            Game.__Game.set_level(TestScreen(self.screen_size))
+            Game.__Game.set_level(GameSelectScreen(self.screen_size))
+            #Game.__Game.set_level(TestScreen(self.screen_size))
 
             self.__input_system = InputSystem()
             
